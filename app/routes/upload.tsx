@@ -53,12 +53,29 @@ const Upload = () => {
 
    setStatusText('Analyzing...');
 
-   const feedback = await ai.feedback(
-    uploadedFile.path,
-    prepareInstructions({ jobTitle, jobDescription})
-    
-   )
+   setStatusText("Reading resume text...");
 
+const resumeText = await ai.img2txt(imageFile.file);
+
+if (!resumeText) {
+  setIsProcessing(false);
+  return setStatusText("Error: Failed to read resume text");
+}
+
+setStatusText("Analyzing resume...");
+
+const feedback = await ai.chat(`
+RESUME CONTENT:
+${resumeText}
+
+ANALYSIS INSTRUCTIONS:
+${prepareInstructions({ jobTitle, jobDescription })}
+`);
+
+if (!feedback) {
+  setIsProcessing(false);
+  return setStatusText("Error: Failed to analyze the resume");
+}
 
    
    if(!feedback) return setStatusText('Error failed to analyze the resume');
@@ -68,9 +85,11 @@ const Upload = () => {
    : feedback.message.content[0].text;
 
    data.feedback = JSON.parse(feedbackTest);
-   await kv.set('resume:${uuid}', JSON.stringify(data));
-   setStatusText('Analysis complete, redirecting...');
-   console.log(data); 
+   await kv.set(`resume:${uuid}`, JSON.stringify(data));   
+   setStatusText("Analysis complete, redirecting...");
+   setIsProcessing(false);
+  console.log(data);
+   navigate(`/resume/${uuid}`);
 
 
   }
