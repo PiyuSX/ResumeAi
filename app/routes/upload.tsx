@@ -83,6 +83,9 @@ if (!feedback) {
    const feedbackTest = typeof feedback.message.content === 'string'
    ? feedback.message.content
    : feedback.message.content[0].text;
+//Test for bug fix
+    console.log("RAW AI RESPONSE:");
+    console.log(feedbackTest);
 
    data.feedback = JSON.parse(feedbackTest);
    await kv.set(`resume:${uuid}`, JSON.stringify(data));   
