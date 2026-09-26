@@ -1,5 +1,3 @@
-
-
 export const resumes: Resume[] = [
   {
     id: "1",
@@ -94,67 +92,74 @@ export const resumes: Resume[] = [
 ];
 
 export const AIResponseFormat = `
-      interface Feedback {
-      overallScore: number; //max 100
-      ATS: {
-        score: number; //rate based on ATS suitability
-        tips: {
-          type: "good" | "improve";
-          tip: string; //give 3-4 tips
-        }[];
-      };
-      toneAndStyle: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      content: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      structure: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-      skills: {
-        score: number; //max 100
-        tips: {
-          type: "good" | "improve";
-          tip: string; //make it a short "title" for the actual explanation
-          explanation: string; //explain in detail here
-        }[]; //give 3-4 tips
-      };
-    }`;
+{
+  "ats_score": {
+    "overall_score_out_of_100": 0,
+    "rating_summary": ""
+  },
+  "ats_parsing_quality": {
+    "score_out_of_25": 0,
+    "issues_found": [""],
+    "recommendations": [""]
+  },
+  "content_quality": {
+    "score_out_of_25": 0,
+    "gaps_vs_job_description": [""],
+    "missing_sections": [""],
+    "recommendations": [""]
+  },
+  "keyword_and_relevance": {
+    "score_out_of_30": 0,
+    "keywords_present": [""],
+    "keywords_missing_or_understated": [""],
+    "recommendations": [""]
+  },
+  "skills_review": {
+    "score_out_of_20": 0,
+    "current_skills": [""],
+    "assessment": "",
+    "recommendations": [""]
+  },
+  "experience_review": {
+    "current_experience": [""],
+    "improvement_suggestions": [""],
+    "example_bullet_templates": [""]
+  },
+  "overall_action_plan": [""]
+}
+`;
 
 export const prepareInstructions = ({
   jobTitle,
   jobDescription,
-  AIResponseFormat,
 }: {
   jobTitle: string;
   jobDescription: string;
-  AIResponseFormat: string;
-}) =>
-  `You are an expert in ATS (Applicant Tracking System) and resume analysis.
-  Please analyze and rate this resume and suggest how to improve it.
-  The rating can be low if the resume is bad.
-  Be thorough and detailed. Don't be afraid to point out any mistakes or areas for improvement.
-  If there is a lot to improve, don't hesitate to give low scores. This is to help the user to improve their resume.
-  If available, use the job description for the job user is applying to to give more detailed feedback.
-  If provided, take the job description into consideration.
-  The job title is: ${jobTitle}
-  The job description is: ${jobDescription}
-  Provide the feedback using the following format: ${AIResponseFormat}
-  Return the analysis as a JSON object, without any other text and without the backticks.
-  Do not include any other text or comments.`;
+}) => `
+You are an expert in ATS and resume analysis.
+
+Analyze the supplied resume content against the following job.
+
+Job title:
+${jobTitle}
+
+Job description:
+${jobDescription}
+
+Return the analysis using exactly this JSON structure:
+
+${AIResponseFormat}
+
+Strict rules:
+- Return valid JSON only.
+- Do not use markdown or backticks.
+- Do not include text outside the JSON.
+- Do not add, remove, or rename fields.
+- Every score must be a number.
+- Every array must contain strings.
+- overall_score_out_of_100 must be between 0 and 100.
+- score_out_of_25 must be between 0 and 25.
+- score_out_of_30 must be between 0 and 30.
+- score_out_of_20 must be between 0 and 20.
+- Give useful and honest resume feedback.
+`;
