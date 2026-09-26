@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { create } from "zustand";
 
 declare global {
@@ -326,33 +327,44 @@ export const usePuterStore = create<PuterStore>((set, get) => {
       AIResponse | undefined
     >;
   };
+const feedback = async (
+  path: string,
+  message: string
+): Promise<AIResponse | undefined> => {
+  const puter = getPuter();
 
-  const feedback = async (path: string, message: string) => {
-    const puter = getPuter();
-    if (!puter) {
-      setError("Puter.js not available");
-      return;
-    }
+  if (!puter) {
+    setError("Puter.js not available");
+    return;
+  }
 
-    return puter.ai.chat(
-      [
-        {
-          role: "user",
-          content: [
-            {
-              type: "file",
-              puter_path: path,
-            },
-            {
-              type: "text",
-              text: message,
-            },
-          ],
-        },
-      ],
-      { model: "claude-sonnet-4" }
-    ) as Promise<AIResponse | undefined>;
-  };
+  try {
+    return (await puter.ai.chat([
+      {
+        role: "user",
+        content: [
+          {
+            type: "file",
+            puter_path: path,
+          },
+          {
+            type: "text",
+            text: message,
+          },
+        ],
+      },
+    ])) as AIResponse;
+  } catch (error) {
+    console.error("AI feedback failed:", error);
+    setError(
+      error instanceof Error
+        ? error.message
+        : "Failed to analyze the resume"
+    );
+    return;
+  }
+};
+
 
   const img2txt = async (image: string | File | Blob, testMode?: boolean) => {
     const puter = getPuter();
