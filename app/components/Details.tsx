@@ -107,17 +107,16 @@ const CategoryContent = ({
 };
 
 const Details = ({ feedback }: { feedback: any }) => {
-      return (
+  return (
     <div className="flex flex-col gap-4 w-full">
       <Accordion>
         <AccordionItem id="ats">
           <AccordionHeader itemId="ats">
             <CategoryHeader
-              title="ATS Parsing"
-              categoryScore={
-                ((feedback.ats_parsing_quality?.score_out_of_25 ?? 0) / 25) *
-                100
-              }
+              title="Skills Review"
+              categoryScore={Math.round(
+                ((feedback.skills_review?.score_out_of_20 ?? 0) / 20) * 100,
+              )}
             />
           </AccordionHeader>
 
@@ -140,9 +139,10 @@ const Details = ({ feedback }: { feedback: any }) => {
           <AccordionHeader itemId="content">
             <CategoryHeader
               title="Content Quality"
-              categoryScore={
-                ((feedback.content_quality?.score_out_of_25 ?? 0) / 25) * 100
-              }
+              categoryScore={Math.round(
+                ((feedback.ats_parsing_quality?.score_out_of_25 ?? 0) / 25) *
+                  100,
+              )}
             />
           </AccordionHeader>
 
