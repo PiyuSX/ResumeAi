@@ -14,7 +14,7 @@ This project was built as a learning project while exploring React Router v7, Pu
 
 ### Application Screenshot
 
-./public/scr1.png
+![ResumeAI Screenshot](https://resume-ai-five-omega.vercel.app/scr1.png)
 
 ## Getting Started
 
