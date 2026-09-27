@@ -1,40 +1,67 @@
-# Welcome to React Router!
+# AI Resume Analyzer
 
-A modern, production-ready template for building full-stack React applications using React Router.
+An AI-powered resume analyzer that helps users evaluate resumes, identify weaknesses, and receive actionable feedback to improve their chances of passing ATS screenings.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Description
 
-## Features
+AI Resume Analyzer is a web application that enables users to upload, preview, and analyze resumes using AI. The application evaluates different aspects of a resume, including skills, content quality, structure, and overall effectiveness.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+The goal of this project is to help job seekers improve their resumes before applying for internships, jobs, and other professional opportunities. Users can upload a resume and receive detailed feedback that highlights strengths, weaknesses, and suggestions for improvement.
+
+This project was built as a learning project while exploring React Router v7, Puter.js authentication, state management, and AI-powered applications.
+
+## Screenshots
+
+### Application Screenshot
+
+public/scr1.png
 
 ## Getting Started
 
-### Installation
+### Dependencies
 
-Install the dependencies:
+Before running this project, make sure you have:
+
+- Node.js
+- npm
+- React Router v7
+- React
+- Tailwind CSS
+- Puter.js
+
+Supported operating systems:
+
+- Windows 10/11
+- Linux
+- macOS
+
+### Installing
+
+Clone the repository:
+
+```bash
+git clone <your-repository-url>
+```
+
+Move into the project directory:
+
+```bash
+cd ai-resume-analyzer
+```
+
+Install the required dependencies:
 
 ```bash
 npm install
 ```
 
-### Development
+### Executing Program
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 npm run dev
 ```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
 
 Create a production build:
 
@@ -42,46 +69,69 @@ Create a production build:
 npm run build
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+Preview the production build:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm run start
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## Features
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+- Resume upload and preview
+- AI-powered resume analysis
+- ATS-style scoring
+- Skills evaluation
+- Content quality evaluation
+- Resume feedback dashboard
+- User authentication with Puter.js
+- Responsive user interface
 
-### DIY Deployment
+## Credits
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+This project was inspired by and partially developed while following the JavaScript Mastery AI Resume Analyzer tutorial by Adrian Hajdin.
 
-Make sure to deploy the output of `npm run build`
+Original tutorial:
 
+https://www.youtube.com/watch?v=iYOz165wGkQ
+
+Tutorial-based work:
+
+- Initial project setup
+- Core application structure
+- Resume analysis workflow
+- Base UI implementation
+
+My contributions and modifications:
+
+- Puter.js authentication setup and debugging
+- State management implementation
+- Bug fixing and troubleshooting
+- UI improvements and customization
+- Resume feedback refinements
+- Score calculation fixes
+- Testing and application debugging
+- General project customization and enhancements
+
+This project was built as a learning experience while working through the tutorial and extending it with personal fixes, improvements, and modifications.
+
+## Help
+
+Common issues and solutions:
+
+### Dependencies not installing
+
+```bash
+npm install
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+
+### Development server not starting
+
+```bash
+npm run dev
 ```
 
-## Styling
+Make sure Node.js and npm are installed correctly and all dependencies are installed.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+## License
 
----
-
-Built with ❤️ using React Router.
+This project is licensed under the MIT License. See the LICENSE file for details.
