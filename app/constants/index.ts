@@ -1,3 +1,39 @@
+const createSampleFeedback = (score: number): Feedback => ({
+  ats_score: {
+    overall_score_out_of_100: score,
+    rating_summary: "Sample resume analysis",
+  },
+  ats_parsing_quality: {
+    score_out_of_25: 0,
+    issues_found: [],
+    recommendations: [],
+  },
+  content_quality: {
+    score_out_of_25: 0,
+    gaps_vs_job_description: [],
+    missing_sections: [],
+    recommendations: [],
+  },
+  keyword_and_relevance: {
+    score_out_of_30: 0,
+    keywords_present: [],
+    keywords_missing_or_understated: [],
+    recommendations: [],
+  },
+  skills_review: {
+    score_out_of_20: 0,
+    current_skills: [],
+    assessment: "",
+    recommendations: [],
+  },
+  experience_review: {
+    current_experience: [],
+    improvement_suggestions: [],
+    example_bullet_templates: [],
+  },
+  overall_action_plan: [],
+});
+
 export const resumes: Resume[] = [
   {
     id: "1",
@@ -5,29 +41,7 @@ export const resumes: Resume[] = [
     jobTitle: "Frontend Developer",
     imagePath: "/images/resume_01.png",
     resumePath: "/resumes/resume-1.pdf",
-    feedback: {
-      overallScore: 85,
-      ATS: {
-        score: 90,
-        tips: [],
-      },
-      toneAndStyle: {
-        score: 90,
-        tips: [],
-      },
-      content: {
-        score: 90,
-        tips: [],
-      },
-      structure: {
-        score: 90,
-        tips: [],
-      },
-      skills: {
-        score: 90,
-        tips: [],
-      },
-    },
+    feedback: createSampleFeedback(85),
   },
   {
     id: "2",
@@ -35,29 +49,7 @@ export const resumes: Resume[] = [
     jobTitle: "Cloud Engineer",
     imagePath: "/images/resume_02.png",
     resumePath: "/resumes/resume-2.pdf",
-    feedback: {
-      overallScore: 55,
-      ATS: {
-        score: 90,
-        tips: [],
-      },
-      toneAndStyle: {
-        score: 90,
-        tips: [],
-      },
-      content: {
-        score: 90,
-        tips: [],
-      },
-      structure: {
-        score: 90,
-        tips: [],
-      },
-      skills: {
-        score: 90,
-        tips: [],
-      },
-    },
+    feedback: createSampleFeedback(55),
   },
   {
     id: "3",
@@ -65,29 +57,15 @@ export const resumes: Resume[] = [
     jobTitle: "iOS Developer",
     imagePath: "/images/resume_03.png",
     resumePath: "/resumes/resume-3.pdf",
-    feedback: {
-      overallScore: 75,
-      ATS: {
-        score: 90,
-        tips: [],
-      },
-      toneAndStyle: {
-        score: 90,
-        tips: [],
-      },
-      content: {
-        score: 90,
-        tips: [],
-      },
-      structure: {
-        score: 90,
-        tips: [],
-      },
-      skills: {
-        score: 90,
-        tips: [],
-      },
-    },
+    feedback: createSampleFeedback(75),
+  },
+  {
+    id: "4",
+    companyName: "Amazon",
+    jobTitle: "Software Engineer",
+    imagePath: "/images/resume_04.png",
+    resumePath: "/resumes/resume-4.pdf",
+    feedback: createSampleFeedback(75),
   },
 ];
 
