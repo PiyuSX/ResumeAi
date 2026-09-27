@@ -6,30 +6,24 @@ const ResumeCard = ({
 }: {
   resume: Resume;
 }) => {
-
-    console.log("imagePath:", imagePath);
+  console.log("imagePath:", imagePath);
   return (
     <Link
       to={`/resume/${id}`}
       className="resume-card animate-in fade-in duration-1000"
     >
       <div className="flex flex-col gap-2">
-        <h2 className="!text-black font-bold break-words">
-          {companyName}
-        </h2>
+        <h2 className="!text-black font-bold break-words">{companyName}</h2>
 
-        <h3 className="text-lg break-words text-gray-500">
-          {jobTitle}
-        </h3>
+        <h3 className="text-lg break-words text-gray-500">{jobTitle}</h3>
       </div>
 
       <div className="flex-shrink-0">
-        <ScoreCircle score={feedback.overallScore} />
+        <ScoreCircle score={feedback.ats_score.overall_score_out_of_100} />
       </div>
 
       <div className="gradient-border animate-in fade-in duration-1000">
         <div className="w-full h-full">
-            
           <img
             src={imagePath}
             alt="resume"
