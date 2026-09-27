@@ -31,8 +31,8 @@ const Category = ({
   );
 };
 
-const Summary = ({ feedback }: { feedback: any }) => {
-  const overallScore =
+const Summary = ({ feedback }: { feedback: Feedback }) => {
+  const overallAtsScore =
     feedback?.ats_score?.overall_score_out_of_100 ?? 0;
 
   const atsParsingScore =
@@ -47,7 +47,7 @@ const Summary = ({ feedback }: { feedback: any }) => {
   return (
     <div className="bg-white rounded-2xl shadow-md w-full">
       <div className="flex flex-row items-center p-4 gap-8">
-        <ScoreGauge score={overallScore} />
+        <ScoreGauge score={overallAtsScore} />
 
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-bold">Your Resume Score</h2>
@@ -75,7 +75,7 @@ const Summary = ({ feedback }: { feedback: any }) => {
 
       <Category
         title="Overall ATS Score"
-        score={overallScore}
+        score={overallAtsScore}
       />
     </div>
   );

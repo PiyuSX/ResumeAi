@@ -34,13 +34,12 @@ const createSampleFeedback = (score: number): Feedback => ({
   overall_action_plan: [],
 });
 
-export const resumes: Resume[] = [
+export const resumes = [
   {
     id: "1",
     companyName: "Google",
     jobTitle: "Frontend Developer",
     imagePath: "/images/resume_01.png",
-    resumePath: "/resumes/resume-1.pdf",
     feedback: createSampleFeedback(85),
   },
   {
@@ -48,7 +47,6 @@ export const resumes: Resume[] = [
     companyName: "Microsoft",
     jobTitle: "Cloud Engineer",
     imagePath: "/images/resume_02.png",
-    resumePath: "/resumes/resume-2.pdf",
     feedback: createSampleFeedback(55),
   },
   {
@@ -56,18 +54,12 @@ export const resumes: Resume[] = [
     companyName: "Apple",
     jobTitle: "iOS Developer",
     imagePath: "/images/resume_03.png",
-    resumePath: "/resumes/resume-3.pdf",
     feedback: createSampleFeedback(75),
   },
-  {
-    id: "4",
-    companyName: "Amazon",
-    jobTitle: "Software Engineer",
-    imagePath: "/images/resume_04.png",
-    resumePath: "/resumes/resume-4.pdf",
-    feedback: createSampleFeedback(75),
-  },
-];
+] satisfies Pick<
+  Resume,
+  "id" | "companyName" | "jobTitle" | "imagePath" | "feedback"
+>[];
 
 export const AIResponseFormat = `
 {
