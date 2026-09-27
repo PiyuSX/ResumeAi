@@ -14,7 +14,7 @@ This project was built as a learning project while exploring React Router v7, Pu
 
 ### Application Screenshot
 
-public/scr1.png
+./public/scr1.png
 
 ## Getting Started
 
@@ -40,13 +40,13 @@ Supported operating systems:
 Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/PiyuSX/ResumeAi.git
 ```
 
 Move into the project directory:
 
 ```bash
-cd ai-resume-analyzer
+cd ResumeAi
 ```
 
 Install the required dependencies:
