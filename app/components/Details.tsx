@@ -113,9 +113,10 @@ const Details = ({ feedback }: { feedback: any }) => {
         <AccordionItem id="ats">
           <AccordionHeader itemId="ats">
             <CategoryHeader
-              title="Skills Review"
+              title="ATS Parsing"
               categoryScore={Math.round(
-                ((feedback.skills_review?.score_out_of_20 ?? 0) / 20) * 100,
+                ((feedback.ats_parsing_quality?.score_out_of_25 ?? 0) / 25) *
+                  100,
               )}
             />
           </AccordionHeader>
@@ -140,8 +141,7 @@ const Details = ({ feedback }: { feedback: any }) => {
             <CategoryHeader
               title="Content Quality"
               categoryScore={Math.round(
-                ((feedback.ats_parsing_quality?.score_out_of_25 ?? 0) / 25) *
-                  100,
+                ((feedback.content_quality?.score_out_of_25 ?? 0) / 25) * 100,
               )}
             />
           </AccordionHeader>
@@ -165,10 +165,10 @@ const Details = ({ feedback }: { feedback: any }) => {
           <AccordionHeader itemId="keywords">
             <CategoryHeader
               title="Keyword Relevance"
-              categoryScore={
+              categoryScore={Math.round(
                 ((feedback.keyword_and_relevance?.score_out_of_30 ?? 0) / 30) *
-                100
-              }
+                  100,
+              )}
             />
           </AccordionHeader>
 
@@ -189,7 +189,12 @@ const Details = ({ feedback }: { feedback: any }) => {
 
         <AccordionItem id="skills">
           <AccordionHeader itemId="skills">
-            <CategoryHeader title="Skills Review" categoryScore={75} />
+            <CategoryHeader
+              title="Skills Review"
+              categoryScore={Math.round(
+                ((feedback.skills_review?.score_out_of_20 ?? 0) / 20) * 100,
+              )}
+            />
           </AccordionHeader>
 
           <AccordionContent itemId="skills">
