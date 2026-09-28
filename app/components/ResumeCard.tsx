@@ -4,12 +4,14 @@ import ScoreCircle from "./ScoreCircle";
 const ResumeCard = ({
   resume,
   clickable = true,
+  imageUrl,
 }: {
   resume: Pick<
     Resume,
     "id" | "companyName" | "jobTitle" | "feedback" | "imagePath"
   >;
   clickable?: boolean;
+  imageUrl?: string | null;
 }) => {
   const card = (
     <>
@@ -34,11 +36,13 @@ const ResumeCard = ({
 
       <div className="gradient-border animate-in fade-in duration-1000">
         <div className="w-full h-full">
-          <img
-            src={resume.imagePath}
-            alt="resume"
-            className="w-full h-[350px] max-sm:h-[200px] object-cover"
-          />
+          {imageUrl !== null && (
+            <img
+              src={imageUrl ?? resume.imagePath}
+              alt="resume"
+              className="w-full h-[350px] max-sm:h-[200px] object-cover"
+            />
+          )}
         </div>
       </div>
     </>
